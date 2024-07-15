@@ -1,0 +1,65 @@
+import random
+
+def mystery_forest():
+    print("In forest")
+    quit()
+
+def void_room():
+    print("in void room")
+    quit()
+
+def na_moo_riddle():
+
+    secret_number = random.randint(1, 10)
+
+    attempts = 0
+
+    loser = 2
+
+    print("Do you understand this Creature: Ae/Aole\n")
+    
+    understand = input().lower()
+
+    if understand == "ae":
+        pass
+    elif understand == "aole":
+        print("Heluhelu hou")
+        na_moo_riddle()
+
+    else:
+        print("NA MO'O doesn't understand you, say it again")
+        na_moo_riddle()
+
+    while True:
+
+        guess = input("E komo i kāu pane: ")
+
+        try:
+            guess = int(guess)
+
+        except ValueError:
+            print("NA MO'O doesn't understand you, say it again.")
+            continue
+
+        attempts += 1
+
+        if guess < secret_number:
+            print("E hele i luna.")
+
+        elif guess > secret_number:
+            print("E hele i lalo.")
+
+        else:
+            #replace 'hero' with {player.name}
+            print("Na Mo'o teleports you into the abyssal void")
+            void_room()
+            break
+
+        if attempts >= loser:
+            print("MAI OLA!")
+            print("Na Moo teleports you into mystery forest")
+            mystery_forest()
+            break
+
+if __name__ == "__main__":
+    na_moo_riddle()
